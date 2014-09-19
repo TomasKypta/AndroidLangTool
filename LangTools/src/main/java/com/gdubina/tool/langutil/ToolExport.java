@@ -94,7 +94,7 @@ public class ToolExport {
         return new File(project, "res");
     }
 
-    private void exportLang(String lang, File valueDir) throws FileNotFoundException, IOException, SAXException {
+    private void exportLang(String lang, File valueDir) throws IOException, SAXException {
         for (String fileName : sAllowedFiles) {
             File stringFile = new File(valueDir, fileName);
             if (!stringFile.exists()) {
@@ -104,7 +104,7 @@ public class ToolExport {
         }
     }
 
-    private Map<String, Integer> exportDefLang(File valueDir) throws FileNotFoundException, IOException, SAXException {
+    private Map<String, Integer> exportDefLang(File valueDir) throws IOException, SAXException {
         Map<String, Integer> keys = new HashMap<String, Integer>();
         HSSFWorkbook wb = new HSSFWorkbook();
 
@@ -183,8 +183,6 @@ public class ToolExport {
         HSSFCellStyle keyStyle = wb.createCellStyle();
         keyStyle.setFont(bold);
 
-		/*keyStyle.setFillForegroundColor(HSSFColor.LEMON_CHIFFON.index);
-		keyStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);*/
         return keyStyle;
     }
 
@@ -402,8 +400,4 @@ public class ToolExport {
             out.println(String.format("'%s' was processed with MISSED KEYS - %d", lang, missedKeys.size()));
         }
     }
-	
-	/*private static String deluminateText(String text){
-		return text.replace("\\'", "'").replace("\\\"", "\"");
-	}*/
 }

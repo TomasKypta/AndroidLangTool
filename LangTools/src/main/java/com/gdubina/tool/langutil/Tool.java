@@ -14,7 +14,7 @@ public class Tool {
             return;
         }
 
-        if ("-c".equals(args[0])) {
+        if ("-s".equals(args[0])) {
             ToolImportSplitter.run(args[1], args.length > 2 ? args[2] : null);
         } else if ("-i".equals(args[0])) {
             ToolImport.run(args[1]);
@@ -28,7 +28,7 @@ public class Tool {
     private static void printHelp() {
         System.out.println("commands format:");
         System.out.println("\texport: -e <project dir> <output file>");
-        System.out.println("\timport with splitting: -c <input file> <splitting config>");
+        System.out.println("\timport with splitting: -s <input file> <splitting config>");
         System.out.println("\timport: -i <input file>");
     }
 }

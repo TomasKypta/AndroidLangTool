@@ -116,6 +116,7 @@ public class ToolImportSplitter {
     }
 
     private void copyRow(Row inTitleRow, HSSFRow outRow) {
+        // TODO copy formatting
         Iterator<Cell> it = inTitleRow.cellIterator();
         while (it.hasNext()) {
             Cell srcCell = it.next();
