@@ -1,0 +1,34 @@
+package com.gdubina.tool.langutil;
+
+import java.io.IOException;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
+import org.xml.sax.SAXException;
+
+public class Tool {
+
+    public static void main(String[] args) throws IOException, ParserConfigurationException, TransformerException, SAXException {
+        if (args == null || args.length == 0) {
+            printHelp();
+            return;
+        }
+
+        if ("-c".equals(args[0])) {
+            ToolImportSplitter.run(args[1], args.length > 2 ? args[2] : null);
+        } else if ("-i".equals(args[0])) {
+            ToolImport.run(args[1]);
+        } else if ("-e".equals(args[0])) {
+            ToolExport.run(args[1], args.length > 2 ? args[2] : null, null);
+        } else {
+            printHelp();
+        }
+    }
+
+    private static void printHelp() {
+        System.out.println("commands format:");
+        System.out.println("\texport: -e <project dir> <output file>");
+        System.out.println("\timport with splitting: -c <input file> <splitting config>");
+        System.out.println("\timport: -i <input file>");
+    }
+}

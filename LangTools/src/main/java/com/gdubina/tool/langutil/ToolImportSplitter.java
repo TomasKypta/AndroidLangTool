@@ -1,6 +1,9 @@
 package com.gdubina.tool.langutil;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
@@ -22,7 +25,7 @@ public class ToolImportSplitter {
     private File mIntermediateXlsDir;
 
     public static void main(String[] args) throws IOException, ParserConfigurationException, TransformerException {
-        if(args == null || args.length == 0){
+        if (args == null || args.length == 0) {
             System.out.println("File name is missed");
             return;
         }
@@ -65,7 +68,7 @@ public class ToolImportSplitter {
         Iterator<Row> it = sheetConfig.rowIterator();
         while (it.hasNext()) {
             Row row = it.next();
-            mSplittingMap.put((int) row.getCell(0).getNumericCellValue(), row.getCell(1).getStringCellValue());
+            mSplittingMap.put((int)row.getCell(0).getNumericCellValue(), row.getCell(1).getStringCellValue());
         }
     }
 
