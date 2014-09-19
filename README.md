@@ -1,31 +1,48 @@
 AndroidLangTool
 ===============
 
-Simple tool to export android strings resourses to excel and import them to project after translating.
-It will scan android project and export all strings.xml to excel file. So you will have simple way to prepare translations 
+Simple tool to export Android string resources to Excel and import them to project after translation.
+The tool scans Android project and exports strings, by default from strings.xml. Additional resources can be specified.
+All the resources are concatenated in a single Excel file.
 
-The app supports xml comments. 
-missed traslations will have red backforund in xls file.
+Xml comments are supported 
+Missing traslations have red background in the xls file.
 
-To run application execute: `java -jar LangTool.jar`
+To build the application execute: `mvn package`
+To run the application execute: `java -jar langtools-VERSION-jar-with-dependencies.jar`
 
-Tool has two commands: export to xls and import from xls file
+Tool has 3 modes:
+* exporting to xls
+* importing from xls
+* importing from xls with splitting xls into multiple separate xls files
  
+## Exporting
 `
-export: -e <project dir> <output file>
-`
-
-**project dir** - path to android project. 
-
-**output file** - name of excel file
-
-
-`
-import: -i <input file>
+params: -e <project dir> <output file> <list of additional resources>
 `
 
-**input file** - name of excel file for importing to project 
+**project dir** - path to the Android project 
+**output file** - name of the generated Excel file
+**list of additional resources** - list of additional resources separated by ':'
 
-link to binary: http://goo.gl/5EaOg
+## Importing
 
-link to eclipse plugin: http://goo.gl/fwEkU
+`
+params: -i <input file>
+`
+
+**input file** - name of the Excel file for importing into the project
+
+## Importing with splitting
+
+`
+params: -s <input file> <splitting config file>
+`
+
+**input file** - name of the Excel file for importing into the project
+**splitting config file** - Excel file containing splitting info
+
+### Format of splitting configuration file
+
+* The first column contains row index of the beginning of a subfile.
+* The second column contains name of the output subfile. 

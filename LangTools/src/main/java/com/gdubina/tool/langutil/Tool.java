@@ -14,12 +14,14 @@ public class Tool {
             return;
         }
 
+        // TODO use some library to parse command line options
+
         if ("-s".equals(args[0])) {
             ToolImportSplitter.run(args[1], args.length > 2 ? args[2] : null);
         } else if ("-i".equals(args[0])) {
             ToolImport.run(args[1]);
         } else if ("-e".equals(args[0])) {
-            ToolExport.run(args[1], args.length > 2 ? args[2] : null, null);
+            ToolExport.run(args[1], args.length > 2 ? args[2] : null, args.length > 3 ? args[3] : null);
         } else {
             printHelp();
         }
